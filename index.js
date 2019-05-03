@@ -1,6 +1,39 @@
 let net;
 const webcamElement = document.getElementById('webcam');
 
+var labelToVal =
+{
+    0: 'A',
+    1: 'B',
+    2: 'C',
+    3: 'D',
+    4: 'E',
+    5: 'F',
+    6: 'G',
+    7: 'H',
+    8: 'I',
+    9: 'J',
+    10: 'K',
+    11: 'L',
+    12: 'M',
+    13: 'N',
+    14: 'O',
+    15: 'P',
+    16: 'Q',
+    17: 'R',
+    18: 'S',
+    19: 'T',
+    20: 'U',
+    21: 'V',
+    22: 'W',
+    23: 'X',
+    24: 'Y',
+    25: 'Z',
+    26: 'del',
+    27: 'nothing',
+    28: 'space'
+}
+
 async function app() {
     console.log('Loading neural net..');
 
@@ -11,18 +44,18 @@ async function app() {
 
     await setupWebcam();
     while (true) {
-        img= tf.browser.fromPixels(webcamElement);
+        img = tf.browser.fromPixels(webcamElement);
         // the neural net expects a 150x150 image, so resize it:
-        img=tf.image.resizeBilinear(img, [150, 150])
+        img = tf.image.resizeBilinear(img, [150, 150])
         // we need a dimension (1,150,150,3) not (150,150,3)
         // Expand our tensor to have an additional dimension, whose size is 1
         const batchedImage = img.expandDims(0);
-        console.log(typeof batchedImage)
-        console.log(batchedImage)
         const result = await net.predict(batchedImage);
-        
+        const arr = result.dataSync();//convert tensor to javascript array
+        const index = arr.indexOf(Math.max(...arr)) //index of the maximum valued element
+        //showing it on the webpage itself
         document.getElementById('console').innerText = `
-        result: ${result}
+        result: ${labelToVal[index]}
       `;
 
         // Give some breathing room by waiting for the next animation frame to
