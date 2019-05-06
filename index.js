@@ -1,6 +1,8 @@
 let net;
 const webcamElement = document.getElementById('webcam');
+const resultmsg = "Result: ";
 
+var finalMessage = "";
 var labelToVal =
 {
     0: 'A',
@@ -56,10 +58,12 @@ async function app() {
         tf.dispose(img);
         tf.dispose(resizedImg);
         tf.dispose(batchedImage);
-        console.log(tf.memory()) // sanity check //- warning: GPU leak stops, but memory consumed is still a lot
+
+        //console.log(tf.memory()) // sanity check //- warning: GPU leak stops, but memory consumed is still a lot
+
         //showing it on the webpage itself
-        document.getElementById('console').innerText = `
-                result: ${labelToVal[index]}`;
+        document.getElementById('resultmsg').innerText = `${resultmsg}`;
+        document.getElementById('console').innerText = `${labelToVal[index]}`;
         // Give some breathing room by waiting for the next animation frame to
         // fire.
         await tf.nextFrame();
@@ -67,10 +71,24 @@ async function app() {
 }
 
 
-$(document).keydown(function(e){
-    if (e.keyCode==32)
-        $("body").append("<p>space detected!</p>");
-    });
+$(document).keydown(function (e) {
+    var result = (document.getElementById('console').innerText);
+    if (e.keyCode == 13) {
+        // $("body").append("<p>enter detected!</p>");        
+        if (result == "space") finalMessage += " ";
+        else if (result == "del") finalMessage = finalMessage.slice(0, -1);
+        else if (finalMessage != "nothing") finalMessage += result;
+    }
+    else if(e.keyCode == 32){ //space
+        finalMessage+=" ";
+    }
+    else if (e.keyCode==90 && e.ctrlKey){//ctrl+z
+        finalMessage = finalMessage.slice(0, -1);
+    }
+    document.getElementById('message').innerText = `${finalMessage}`;
+    $('input.inpTest').sendkeys(finalMessage);
+    
+});
 
 async function setupWebcam() {
     return new Promise((resolve, reject) => {
