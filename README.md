@@ -27,3 +27,8 @@ Can use the same [https-server](https://www.npmjs.com/package/http-server) globa
 8. Testing what keypress is what keycode, [tester here](https://unixpapa.com/js/testkey.html).
 user would use spacebar to confirm action
 dialogflow integration
+
+9. use `require()` in the browser. look at [Browserify docs](https://github.com/browserify/browserify).
+`npm install -g browserify` and `browserify index.js > bundle.js`
+
+we use `require()` to use `jquery-sendkeys`, from [here](https://www.npmjs.com/package/jquery-sendkeys).

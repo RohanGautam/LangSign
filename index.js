@@ -1,3 +1,6 @@
+var $ = require('jquery');
+require('jquery-sendkeys'); // can do dis cuz browserify
+
 let net;
 const webcamElement = document.getElementById('webcam');
 const resultmsg = "Result: ";
@@ -86,7 +89,7 @@ $(document).keydown(function (e) {
         finalMessage = finalMessage.slice(0, -1);
     }
     document.getElementById('message').innerText = `${finalMessage}`;
-    $('input.inpTest').sendkeys(finalMessage);
+    $('.inpTest').sendkeys(finalMessage);
     
 });
 
