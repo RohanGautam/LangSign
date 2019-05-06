@@ -66,6 +66,12 @@ async function app() {
     }
 }
 
+
+$(document).keydown(function(e){
+    if (e.keyCode==32)
+        $("body").append("<p>space detected!</p>");
+    });
+
 async function setupWebcam() {
     return new Promise((resolve, reject) => {
         const navigatorAny = navigator;

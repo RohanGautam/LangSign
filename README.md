@@ -21,3 +21,9 @@ Can use the same [https-server](https://www.npmjs.com/package/http-server) globa
 5. [This article](https://thekevinscott.com/image-classification-with-javascript/) on how to do some image preprocesing with javascript using tf.js
 
 6. Fixing memory leak by referring to the `tf.dispose()` method, from [this](https://www.tensorflow.org/js/guide/tensors_operations) website.
+
+7. Capturing Keypresses on a website from [stackOverflow](https://stackoverflow.com/questions/2878983/capture-key-press-without-placing-an-input-element-on-the-page) ofcourse.
+
+8. Testing what keypress is what keycode, [tester here](https://unixpapa.com/js/testkey.html).
+user would use spacebar to confirm action
+dialogflow integration
