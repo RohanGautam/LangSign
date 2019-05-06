@@ -16,4 +16,8 @@ Can use the same [https-server](https://www.npmjs.com/package/http-server) globa
 
 3. [This video](https://www.youtube.com/watch?v=Szjt8E7EKQc) and the video's [article](https://pythonprogramming.net/loading-keras-model-tensorflowjs-tutorial/) were also helpful in making model in python and loading for tf.js, by _sentdex_.
 
-4. [This article](https://thekevinscott.com/image-classification-with-javascript/) on how to do some image preprocesing with javascript using tf.js
+4. [Importing Keras models](https://www.tensorflow.org/js/tutorials/conversion/import_keras) to tf.js.
+
+5. [This article](https://thekevinscott.com/image-classification-with-javascript/) on how to do some image preprocesing with javascript using tf.js
+
+6. Fixing memory leak by referring to the `tf.dispose()` method, from [this](https://www.tensorflow.org/js/guide/tensors_operations) website.

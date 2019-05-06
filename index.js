@@ -44,20 +44,22 @@ async function app() {
 
     await setupWebcam();
     while (true) {
-        img = tf.browser.fromPixels(webcamElement);
-        // the neural net expects a 150x150 image, so resize it:
-        img = tf.image.resizeBilinear(img, [150, 150])
-        // we need a dimension (1,150,150,3) not (150,150,3)
-        // Expand our tensor to have an additional dimension, whose size is 1
-        const batchedImage = img.expandDims(0);
+        // have to do this then dispose the tensors to avoid memry leak     
+        const img = tf.browser.fromPixels(webcamElement);
+        const resizedImg = tf.image.resizeBilinear(img, [150, 150])
+        const batchedImage = resizedImg.expandDims(0);// keep() to use it outside of tidy()
         const result = await net.predict(batchedImage);
-        const arr = result.dataSync();//convert tensor to javascript array
-        const index = arr.indexOf(Math.max(...arr)) //index of the maximum valued element
+        arr = result.dataSync();//convert tensor to javascript array
+        //index of the maximum value
+        var index = arr.indexOf(Math.max(...arr));
+        // disposing tensors after we're doe with them
+        tf.dispose(img);
+        tf.dispose(resizedImg);
+        tf.dispose(batchedImage);
+        console.log(tf.memory()) // sanity check //- warning: GPU leak stops, but memory consumed is still a lot
         //showing it on the webpage itself
         document.getElementById('console').innerText = `
-        result: ${labelToVal[index]}
-      `;
-
+                result: ${labelToVal[index]}`;
         // Give some breathing room by waiting for the next animation frame to
         // fire.
         await tf.nextFrame();
