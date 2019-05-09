@@ -1,5 +1,7 @@
+// jQuery and it's extensioin required to send keys
 var $ = require('jquery');
 require('jquery-sendkeys'); // can do dis cuz browserify
+var botui = new BotUI('botui-app') // id of container
 
 let net;
 const webcamElement = document.getElementById('webcam');
@@ -82,15 +84,17 @@ $(document).keydown(function (e) {
         else if (result == "del") finalMessage = finalMessage.slice(0, -1);
         else if (finalMessage != "nothing") finalMessage += result;
     }
-    else if(e.keyCode == 32){ //space
-        finalMessage+=" ";
+    else if (e.keyCode == 32) { //space
+        finalMessage += " ";
     }
-    else if (e.keyCode==90 && e.ctrlKey){//ctrl+z
+    else if (e.keyCode == 90 && e.ctrlKey) {//ctrl+z
         finalMessage = finalMessage.slice(0, -1);
     }
+    else if (e.keyCode == 77 && e.ctrlKey){ //ctrl+m to send the message to dialogflow
+        $('.botui-actions-text-input').sendkeys(finalMessage);
+    }
     document.getElementById('message').innerText = `${finalMessage}`;
-    $('.inpTest').sendkeys(finalMessage);
-    
+
 });
 
 async function setupWebcam() {
@@ -111,5 +115,38 @@ async function setupWebcam() {
         }
     });
 }
+
+
+
+const callAPI = async (requestStr) => {
+    console.log(requestStr);
+    const response = await fetch(`http://localhost:5000/request/${requestStr}`);
+    const myJson = await response.json(); //extract JSON from the http response
+    console.log(myJson);
+    return (myJson);
+}
+
+botui.message.bot({ // show first message
+    delay: 200,
+    content: 'hello'
+}).then(() => {
+    return botui.action.text({
+        action: {
+            placeholder: "Your query"
+        }
+    });
+}).then(async (res) => {
+
+    botui.message.add({
+        loading: true
+    }).then(async (index) => {
+        jsonResult = await callAPI(res.value);
+        console.log('here it\'s', res.value);
+        return botui.message.update(index, {
+            loading: false,
+            content: `${jsonResult['response']}`
+        });
+    })
+})
 
 app();

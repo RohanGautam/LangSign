@@ -8,6 +8,8 @@
     <script src="https://unpkg.com/@tensorflow-models/mobilenet"></script>
     <!-- load jQuery -->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
+    <link rel="stylesheet" href="./node_modules/botui/build/botui.min.css" />
+    <link rel="stylesheet" href="./node_modules/botui/build/botui-theme-default.css" />
 </head>
 
 <body>
@@ -15,11 +17,14 @@
     <div id="console"></div>
     <video autoplay playsinline muted id="webcam" width="250" height="250"></video>
     <div id="message"></div>
-    <input type="text" class="inpTest"/>
-    <!-- Load dialogflow console then index.js after the content of the page -->
-    <iframe allow="microphone;" width="350" height="430"
-        src="https://console.dialogflow.com/api-client/demo/embedded/8a69754c-1511-4c6a-b282-e4ffa53e6100">
-    </iframe>
+    <!-- <input type="text" class="inpTest"/> -->
+    <div class="botui-app-container" id="botui-app">
+        <bot-ui></bot-ui>
+    </div>
+    <!-- load vue and botui -->
+    <script src="https://cdn.jsdelivr.net/vue/latest/vue.min.js"></script>
+    <script src="./node_modules/botui/build/botui.min.js"></script>
+    <!-- Load index.js after the content of the page -->
     <script src="bundle.js"></script>
     <!-- make changes to index, bundle w browserify and use only the output file -->
 

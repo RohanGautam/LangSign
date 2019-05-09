@@ -9,6 +9,7 @@
   "author": "rohan",
   "license": "ISC",
   "dependencies": {
+    "botui": "^0.3.8",
     "http-server": "^0.11.1",
     "jquery": "^3.4.1",
     "jquery-sendkeys": "^4.0.0"
