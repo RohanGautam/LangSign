@@ -10,23 +10,65 @@
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
     <link rel="stylesheet" href="./node_modules/botui/build/botui.min.css" />
     <link rel="stylesheet" href="./node_modules/botui/build/botui-theme-default.css" />
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-    <div id="resultmsg"></div>
-    <div id="console"></div>
-    <video autoplay playsinline muted id="webcam" width="250" height="250"></video>
-    <div id="message"></div>
-    <!-- <input type="text" class="inpTest"/> -->
-    <div class="botui-app-container" id="botui-app">
-        <bot-ui></bot-ui>
+
+    <header class="jumbotron">
+        <div class="container">
+            <div class="row row-header">
+                <div class="col-12 com-sm-6">
+                    <h1>LangSign</h1>
+                    <p>Talking to a chatbot, now with American Sign Language!</p>
+                </div class="col-12 col-sm">
+                <div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6 align-items-center">
+                <div class="row row-content align-items-center">
+                    <div class="col-12">
+                        <div id="resultmsg"><p>Predicted result</p></div>
+                        <div id="console"></div>
+                    </div>
+                </div>
+                <div class="row row-content align-items-center">
+                    <div class="col-12">
+                        <div id="webcam-container">
+                            <!-- get error from tf.js if width and height set in css -->
+                            <video autoplay playsinline muted id="webcam" width="500px" height="375px"></video>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-content align-items-center">
+                    <div class="col-12">
+                        <div id="message"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="botui-app-container" id="botui-app">
+                    <bot-ui></bot-ui>
+                </div>
+            </div>
+        </div>
+
     </div>
+
     <!-- load vue and botui -->
     <script src="https://cdn.jsdelivr.net/vue/latest/vue.min.js"></script>
     <script src="./node_modules/botui/build/botui.min.js"></script>
-    <!-- Load index.js after the content of the page -->
-    <script src="bundle.js"></script>
     <!-- make changes to index, bundle w browserify and use only the output file -->
+    <script src="js/bundle.js"></script>
+    <!-- load bootstrap -->
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
 </body>
 

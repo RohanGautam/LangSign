@@ -5,8 +5,7 @@ var botui = new BotUI('botui-app') // id of container
 
 let net;
 const webcamElement = document.getElementById('webcam');
-const resultmsg = "Result: ";
-
+var currentPrediction="";
 var finalMessage = "";
 var labelToVal =
 {
@@ -67,8 +66,8 @@ async function app() {
         //console.log(tf.memory()) // sanity check //- warning: GPU leak stops, but memory consumed is still a lot
 
         //showing it on the webpage itself
-        document.getElementById('resultmsg').innerText = `${resultmsg}`;
-        document.getElementById('console').innerText = `${labelToVal[index]}`;
+        currentPrediction=labelToVal[index];
+        document.getElementById('console').innerText = `${currentPrediction}`;
         // Give some breathing room by waiting for the next animation frame to
         // fire.
         await tf.nextFrame();
@@ -77,7 +76,7 @@ async function app() {
 
 
 $(document).keydown(function (e) {
-    var result = (document.getElementById('console').innerText);
+    var result = currentPrediction;
     if (e.keyCode == 16) {
         // if it's shift, then select current prediction      
         if (result == "space") finalMessage += " ";
@@ -90,7 +89,7 @@ $(document).keydown(function (e) {
     else if (e.keyCode == 90 && e.ctrlKey) {//ctrl+z
         finalMessage = finalMessage.slice(0, -1);
     }
-    else if (e.keyCode == 77 && e.ctrlKey){ //ctrl+m to send the message to dialogflow
+    else if (e.keyCode == 69 && e.ctrlKey){ //ctrl+e to send the message to dialogflow
         $('.botui-actions-text-input').sendkeys(finalMessage);
         finalMessage=""; //reset the message
     }

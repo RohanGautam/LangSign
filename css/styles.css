@@ -1,0 +1,11 @@
+#webcam-container {
+    margin: 0px auto;
+    /* 500+10+10, and 375+10+10 (10 is border thickness) */
+	width: 520px; 
+	height: 395px;
+	border: 10px #333 solid;
+}
+
+#webcam {
+    background-color: #666;
+}
