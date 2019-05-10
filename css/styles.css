@@ -46,3 +46,9 @@
 .botui-message {
     font-size: 20px;
 }
+
+#message-placeholder {
+    color: rgb(107, 102, 102);
+    font-style: italic;
+    font-size:20px;
+}

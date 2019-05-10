@@ -108,5 +108,5 @@ example api call `http://127.0.0.1:5000/request/camp deadline`
 
 ### todo/expansion
 * send it directly to the chatbot input and manipulate stuff over there?
-* UI bump needed
+* show "sentence buffer" every time finalStr is cleared
 * make a new GIF for README

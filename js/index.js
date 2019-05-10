@@ -2,7 +2,6 @@
 var $ = require('jquery');
 require('jquery-sendkeys'); // can do dis cuz browserify
 var botui = new BotUI('botui-app') // id of container
-
 let net;
 const webcamElement = document.getElementById('webcam');
 var currentPrediction="";
@@ -91,7 +90,7 @@ $(document).keydown(function (e) {
     }
     else if (e.keyCode == 69 && e.ctrlKey){ //ctrl+e to send the message to dialogflow
         $('.botui-actions-text-input').sendkeys(finalMessage);
-        finalMessage=""; //reset the message
+        finalMessage=""; //reset the message        
     }
     document.getElementById('message').innerText = `${finalMessage}`;
 
