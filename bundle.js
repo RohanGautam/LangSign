@@ -79,8 +79,8 @@ async function app() {
 
 $(document).keydown(function (e) {
     var result = (document.getElementById('console').innerText);
-    if (e.keyCode == 13) {
-        // $("body").append("<p>enter detected!</p>");        
+    if (e.keyCode == 16) {
+        // if it's shift, then select current prediction      
         if (result == "space") finalMessage += " ";
         else if (result == "del") finalMessage = finalMessage.slice(0, -1);
         else if (finalMessage != "nothing") finalMessage += result;
@@ -93,6 +93,7 @@ $(document).keydown(function (e) {
     }
     else if (e.keyCode == 77 && e.ctrlKey){ //ctrl+m to send the message to dialogflow
         $('.botui-actions-text-input').sendkeys(finalMessage);
+        finalMessage=""; //reset the message
     }
     document.getElementById('message').innerText = `${finalMessage}`;
 
@@ -127,28 +128,31 @@ const callAPI = async (requestStr) => {
     return (myJson);
 }
 
-botui.message.bot({ // show first message
+botui.message.bot({ // show the first message
     delay: 200,
-    content: 'hello'
-}).then(() => {
-    return botui.action.text({
+    content: 'Hello there!'
+});
+
+function init_bot() {
+    botui.action.text({
         action: {
             placeholder: "Your query"
         }
-    });
-}).then(async (res) => {
-
-    botui.message.add({
-        loading: true
-    }).then(async (index) => {
-        jsonResult = await callAPI(res.value);
-        console.log('here it\'s', res.value);
-        return botui.message.update(index, {
-            loading: false,
-            content: `${jsonResult['response']}`
-        });
+    }).then(async (res) => {
+        botui.message.add({
+            loading: true
+        }).then(async (index) => {
+            jsonResult = await callAPI(res.value);
+            console.log('here it\'s', res.value);
+            return botui.message.update(index, {
+                loading: false,
+                content: `${jsonResult['response']}`
+            });
+        }).then(init_bot); //ask again, and keep it in loop
     })
-})
+}
+
+init_bot();// initialize the bot one time, will continue itself after initial call
 
 app();
 },{"jquery":4,"jquery-sendkeys":3}],2:[function(require,module,exports){

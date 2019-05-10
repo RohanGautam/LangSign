@@ -100,3 +100,13 @@ we use `require()` to use `jquery-sendkeys`, from [here](https://www.npmjs.com/p
 example api call `http://127.0.0.1:5000/request/camp deadline`
 
 
+## keyboard commands:
+`shift`: captures current prediction
+`spacebar`: inserts a space into the sentence being formed
+`Ctrl+M`: sends the sentence formed to the chatbot input feild, clears the sentence buffer
+`enter`: sends what was in the chatbot input feild to the chatbot
+
+### todo/expansion
+* send it directly to the chatbot input and manipulate stuff over there?
+* UI bump needed
+* make a new GIF for README
