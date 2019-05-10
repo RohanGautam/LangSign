@@ -1,11 +1,29 @@
 #webcam-container {
     margin: 0px auto;
     /* 500+10+10, and 375+10+10 (10 is border thickness) */
-	width: 520px; 
-	height: 395px;
-	border: 10px #333 solid;
+    width: 520px;
+    height: 395px;
+    border: 10px #333 solid;
 }
 
 #webcam {
     background-color: #666;
+}
+
+#resultmsg {
+    font-size: 30px;
+    color: #000000;
+}
+
+#console {
+    background-color: rgb(228, 214, 167); /* Green */
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 35px;
+    margin: 10px;
+    border-radius: 4px;
 }
