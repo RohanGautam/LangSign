@@ -127,12 +127,14 @@ const callAPI = async (requestStr) => {
 }
 
 botui.message.bot({ // show the first message
+    cssClass: 'botui-message',
     delay: 200,
     content: 'Hello there!'
 });
 
 function init_bot() {
     botui.action.text({
+        cssClass: 'botui-message',
         action: {
             placeholder: "Your query"
         }
@@ -143,6 +145,7 @@ function init_bot() {
             jsonResult = await callAPI(res.value);
             console.log('here it\'s', res.value);
             return botui.message.update(index, {
+                cssClass: 'botui-message',
                 loading: false,
                 content: `${jsonResult['response']}`
             });
