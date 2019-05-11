@@ -1,9 +1,9 @@
 # LangSign
 ASL gesture recognition in the browser.
 
-### To run: open `index.html` in a browser
+### To run: start the two servers[flask and http-server, instructions below] and open `index.html` in a browser
 ### Demo:
-![langsignGIF](https://user-images.githubusercontent.com/17317792/57445938-0c5b3980-7286-11e9-8146-df1adf4d90de.gif)
+![langsignGIF_2](https://user-images.githubusercontent.com/17317792/57567458-13ac4f80-740c-11e9-979f-3324296deeb8.gif)
 
 # Setting the whole thing up
 - [Getting keys for dialogflow agent](#getting-keys-for-dialogflow-agent)
@@ -62,7 +62,7 @@ This is how everything ties up:
 
 This should be your directory structure(well this is mine):
 
-![directory structure](https://user-images.githubusercontent.com/17317792/57443605-04e56180-7281-11e9-9534-e3bc009c3279.png)
+![directory structure](https://user-images.githubusercontent.com/17317792/57567512-f0ce6b00-740c-11e9-8d95-74d779b2b308.png)
 
 # References and Notes:
 1. [this](https://codelabs.developers.google.com/codelabs/tensorflowjs-teachablemachine-codelab/index.html#0) awesome tutorial on how to access webcam, load a model, and train the model on the browser itself with tf.js .
