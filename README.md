@@ -98,15 +98,15 @@ we use `require()` to use `jquery-sendkeys`, from [here](https://www.npmjs.com/p
 12. `python backend.py` to obtain an api endpoint which frontend can hopefully query. **start the backend flask server with this command before loading `index.html`**
 
 example api call `http://127.0.0.1:5000/request/camp deadline`
+
 13. BotUI [examples](https://github.com/botui/botui-examples)!!!
 
 ## keyboard commands:
-`shift`: captures current prediction
-`spacebar`: inserts a space into the sentence being formed
-`Ctrl+E`: sends the sentence formed to the chatbot input feild, clears the sentence buffer
-`enter`: sends what was in the chatbot input feild to the chatbot
+* `shift`: captures current prediction
+* `spacebar`: inserts a space into the sentence being formed
+* `Ctrl+E`: sends the sentence formed to the chatbot input feild, clears the sentence buffer
+* `enter`: sends what was in the chatbot input feild to the chatbot
 
 ### todo/expansion
 * send it directly to the chatbot input and manipulate stuff over there?
 * show "sentence buffer" every time finalStr is cleared
-* make a new GIF for README
