@@ -3,7 +3,7 @@ ASL gesture recognition in the browser.
 
 ### To run: open `index.html` in a browser
 ### Demo:
-![langsignGIF](https://user-images.githubusercontent.com/17317792/57445938-0c5b3980-7286-11e9-8146-df1adf4d90de.gif)
+![langsignGIF_2](https://user-images.githubusercontent.com/17317792/57567458-13ac4f80-740c-11e9-979f-3324296deeb8.gif)
 
 # Setting the whole thing up
 - [Getting keys for dialogflow agent](#getting-keys-for-dialogflow-agent)
