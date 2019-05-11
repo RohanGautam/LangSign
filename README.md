@@ -62,7 +62,7 @@ This is how everything ties up:
 
 This should be your directory structure(well this is mine):
 
-![directory structure](https://user-images.githubusercontent.com/17317792/57443605-04e56180-7281-11e9-9534-e3bc009c3279.png)
+![directory structure](https://user-images.githubusercontent.com/17317792/57567512-f0ce6b00-740c-11e9-8d95-74d779b2b308.png)
 
 # References and Notes:
 1. [this](https://codelabs.developers.google.com/codelabs/tensorflowjs-teachablemachine-codelab/index.html#0) awesome tutorial on how to access webcam, load a model, and train the model on the browser itself with tf.js .
