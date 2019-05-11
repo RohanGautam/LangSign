@@ -1,7 +1,7 @@
 # LangSign
 ASL gesture recognition in the browser.
 
-### To run: open `index.html` in a browser
+### To run: start the two servers[flask and http-server, instructions below] and open `index.html` in a browser
 ### Demo:
 ![langsignGIF_2](https://user-images.githubusercontent.com/17317792/57567458-13ac4f80-740c-11e9-979f-3324296deeb8.gif)
 
