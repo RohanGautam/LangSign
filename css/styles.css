@@ -29,7 +29,7 @@
 }
 
 #message-container {
-    width: 520px;
+    /* width: 520px; */
     height: 55px;
     background-color: rgb(228, 214, 167); /* Green */
     border: none;
@@ -51,4 +51,16 @@
     color: rgb(107, 102, 102);
     font-style: italic;
     font-size:20px;
+}
+
+.footer {
+    font-size: 20px;
+    color: #585757d2;
+    text-align: center;
+    margin:50px 50px 0px 50px;
+}
+
+.jumbotron {
+    padding-top: 48px;
+    padding-bottom: 48px;
 }
